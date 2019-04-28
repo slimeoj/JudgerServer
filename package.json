@@ -1,0 +1,37 @@
+{
+  "name": "judgerserver",
+  "version": "1.0.0",
+  "description": "judgerServer for oj",
+  "main": "app.js",
+  "scripts": {
+    "server": "node ./dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimeoj/JudgerServer.git"
+  },
+  "keywords": [
+    "judgerServer"
+  ],
+  "author": "rainboy",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/slimeoj/JudgerServer/issues"
+  },
+  "homepage": "https://github.com/slimeoj/JudgerServer#readme",
+  "dependencies": {
+    "@types/socket.io": "^2.1.2",
+    "koa": "^2.7.0",
+    "koa-logger": "^3.2.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-logger": "^3.1.1",
+    "@types/node": "^11.13.8",
+    "socket.io-client": "^2.2.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  }
+}
