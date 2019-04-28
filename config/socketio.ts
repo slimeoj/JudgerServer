@@ -2,6 +2,8 @@ import * as socket from 'socket.io'
 import * as Koa from 'koa'
 import * as http from 'http'
 
+import {judge,disconnect,error} from '../middlewares/socket'
+
 export const createScoket = (app:Koa)=>{
     let server = http.createServer(app.callback())
     const io = socket(server)
@@ -12,9 +14,11 @@ export const createScoket = (app:Koa)=>{
     nsp.on('connect',(ck:socket.Socket)=>{
         console.log("yes connnection")
         console.log(ck.id)
-        ck.on('*',function(){
-            console.log("hello")
-        })
+
+        ck.on('judge',judge)
+        ck.on('disconnect',disconnect)
+        ck.on('error',error)
+
     })
 
 

@@ -12,6 +12,14 @@ socket.on('connect_error',(e)=>{
     console.log(e)
 })
 
+
+
 socket.on('connect_timeout',()=>{
     console.log('connecte timeout!')
+})
+
+socket.emit('judge',{
+    id:1000,
+    lang:'c++',
+    code:'123123123123123123123',
 })

@@ -12,7 +12,7 @@
     "url": "git+https://github.com/slimeoj/JudgerServer.git"
   },
   "keywords": [
-    "judgerServer"
+    "judgeServer"
   ],
   "author": "rainboy",
   "license": "GPL-3.0-or-later",
