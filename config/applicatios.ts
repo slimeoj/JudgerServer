@@ -7,9 +7,6 @@ export const createServer = (): Koa => {
 
     app.use(logger())
 
-    app.use((ctx: Koa.Context, next: Function) => {
-        ctx.body = "hello world!";
-    })
 
     return app;
 }

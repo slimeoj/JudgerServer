@@ -5,15 +5,24 @@ import * as http from 'http'
 export const createScoket = (app:Koa)=>{
     let server = http.createServer(app.callback())
     const io = socket(server)
-    io.on('connect',(ck)=>{
-        console.log("yes connnection at master")
-    })
 
     const nsp = io.of('/judge')
 
+
     nsp.on('connect',(ck:socket.Socket)=>{
         console.log("yes connnection")
+        console.log(ck.id)
+        ck.on('*',function(){
+            console.log("hello")
+        })
     })
 
-    return server
+
+    app.use((ctx: Koa.Context, next: Function) => {
+        console.log(nsp.connected)
+        ctx.body = Object.keys( nsp.connected).length;
+    })
+
+
+    return {server,nsp}
 }

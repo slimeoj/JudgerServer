@@ -1,7 +1,8 @@
 var client = require("socket.io-client")
 
-const socket  = client("http://127.0.0.1:3000")
+const socket  = client("http://127.0.0.1:3000/judge")
 
+    socket.emit("*","hello")
 socket.on('connect',()=>{
     console.log('connected!')
 })
