@@ -62,10 +62,12 @@ function judge(this:socket.Socket,data: JudgeServer.postJudgeData) {
     }
 }
 
-function disconnect() {
+function disconnect(reason:string) {
+    console.log(reason)
 }
 
 function error(e: any) {
+    console.log(e)
 }
 
 
