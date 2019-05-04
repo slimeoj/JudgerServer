@@ -1,7 +1,11 @@
 /// <reference types="socket.io" />
 import  * as socket from 'socket.io'
-import { default_judge_argment } from '../env/index'
+import { default_judge_argment } from '../config/index'
 import * as util from 'util'
+import Redis from '../application/redis'
+
+const debug = console.log
+
 
 const { lang: dlang, memory: dmemory, time: dtime, stack: dstack, spj: dspj } = default_judge_argment
 
@@ -38,8 +42,8 @@ function validata(data: JudgeServer.postJudgeData):JudgeServer.postJudgeData {
 
 /** 处理的评测的数据 */
 function judge(this:socket.Socket,data: JudgeServer.postJudgeData) {
-    console.log("==========================================")
-    console.log(arguments)
+    debug("==========================================")
+    debug(arguments)
 
     /** 数据验证 */
 
@@ -52,12 +56,20 @@ function judge(this:socket.Socket,data: JudgeServer.postJudgeData) {
         }
         let tm = JSON.stringify(__data)
 
+        //debug(tm)
+
         /** 加入队列 */
-        console.log(tm)
+        Redis.compile_push(tm)
         /** 发布消息 */
+        Redis.publish_message({
+            step:-1,
+            status:0,
+            message:'验证数据成功'
+        })
+
     }
     catch (e) {
-        /** 发布消息 */
+        /** 发布失败消息 */
         console.log(e)
     }
 }

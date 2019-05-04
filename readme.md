@@ -4,8 +4,8 @@
 
 ```
 .
-├── config          生成配好的服务
-├── env             配置
+├── config          配置
+├── application 生成配好的服务
 ├── libs            库
 ├── middlewares     中间件
 ├── test            测试

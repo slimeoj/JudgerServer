@@ -4,6 +4,8 @@
   "description": "judgerServer for oj",
   "main": "app.js",
   "scripts": {
+    "compile": "tsc",
+    "postcompile": "./script/index.sh",
     "server": "node ./dist/app.js",
     "watch": "nodemon ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,13 +26,16 @@
   "dependencies": {
     "@types/socket.io": "^2.1.2",
     "ioredis": "^4.9.0",
+    "js-yaml": "^3.13.1",
     "koa": "^2.7.0",
     "koa-logger": "^3.2.0",
     "nodemon": "^1.18.11",
+    "package.json": "^2.0.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@types/ioredis": "^4.0.10",
+    "@types/js-yaml": "^3.12.1",
     "@types/koa": "^2.0.48",
     "@types/koa-logger": "^3.1.1",
     "@types/node": "^11.13.8",

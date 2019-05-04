@@ -1,0 +1,8 @@
+# 发布用的连接
+publish: redis://localhost:6379/5
+# 订阅用的连接
+subscribe: redis://localhost:6379/5
+# 评测队列用的连接
+judge: redis://localhost:6379/5
+# 编译队列用的连接
+compile: redis://localhost:6379/5

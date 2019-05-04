@@ -14,7 +14,11 @@ declare namespace JudgeServer {
             socket_client_id:string,
             raw:postJudgeData
     }
+
 }
+
+
+
 
 
 

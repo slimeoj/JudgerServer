@@ -1,5 +1,5 @@
-import { createServer } from './config/applicatios'
-import { createScoket } from './config/socketio'
+import { createServer } from './application/applicatios'
+import { createScoket } from './application/socketio'
 
 module.exports = (async () => {
     try {
