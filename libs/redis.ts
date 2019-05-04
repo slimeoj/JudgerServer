@@ -75,7 +75,7 @@ export class redis {
     }
 
     /** 发布信息 */
-    publish_message(message:Message){
+    publish_message(message:Message):Promise<any>{
         if( typeof(message) === 'string')
             return this.publish!.publish('publish_message',<string>message)
         return this.publish!.publish('publish_message',JSON2STR(message))
@@ -103,10 +103,19 @@ export class redis {
     }
 
     /** 生产:评测队列 */
-    judge_push(){
+    judge_push(data:JudgeServer.compile_type_data):Promise<any>{
+        return this.judge!.lpush('judge_queue',JSON2STR(data))
     }
 
     /** 消费:评测队列 */
-    async judge_pop(){
+    async judge_pop():Promise<JudgeServer.compile_type_data | null>{
+        // @ts-ignore
+        let res = await this.judge!.brpop('judge_queue',1)
+        try{
+            return <JudgeServer.compile_type_data>STR2JSON(res[1])
+        }
+        catch(e){
+            return null
+        }
     }
 }
